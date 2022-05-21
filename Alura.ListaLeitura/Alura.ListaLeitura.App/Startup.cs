@@ -1,6 +1,4 @@
-﻿using Alura.ListaLeitura.App.Logica;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Routing;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Alura.ListaLeitura.App
@@ -9,20 +7,24 @@ namespace Alura.ListaLeitura.App
 	{
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddRouting();
+			//services.AddRouting();
+			services.AddMvc();
 		}
 		public void Configure(IApplicationBuilder app)
 		{
-			var builder = new RouteBuilder(app);
-			builder.MapRoute("Livros/ParaLer", LivroLogica.LivroParaLer);
-			builder.MapRoute("Livros/Lendo", LivroLogica.LivroLendo);
-			builder.MapRoute("Livros/Lidos", LivroLogica.LivroLido);
-			builder.MapRoute("Cadastro/NovoLivro/{nome}/{autor}", CadastroLogica.NovoLivroParaLer);
-			builder.MapRoute("Livros/Detalhes/{id:int}", LivroLogica.ExibeDetalhes);
-			builder.MapRoute("Cadastro/NovoLivro", CadastroLogica.ExibeFormulario);
-			builder.MapRoute("Cadastro/Incluir", CadastroLogica.ProcessaFormulario);
-			var rotas = builder.Build();
-			app.UseRouter(rotas);
+			app.UseDeveloperExceptionPage();
+			app.UseMvcWithDefaultRoute();
+			//var builder = new RouteBuilder(app);
+			//builder.MapRoute("{controller}/{action",);
+			//builder.MapRoute("Livros/ParaLer", LivroLogica.ParaLer);
+			//builder.MapRoute("Livros/Lendo", LivroLogica.Lendo);
+			//builder.MapRoute("Livros/Lidos", LivroLogica.Lido);
+			//builder.MapRoute("Cadastro/NovoLivro/{nome}/{autor}", CadastroLogica.NovoLivro);
+			//builder.MapRoute("Livros/Detalhes/{id:int}", LivroLogica.Detalhes);
+			//builder.MapRoute("Cadastro/NovoLivro", CadastroLogica.ExibeFormulario);
+			//builder.MapRoute("Cadastro/Incluir", CadastroLogica.Incluir);
+			//var rotas = builder.Build();
+			//app.UseRouter(rotas);
 			//app.Run(Roteamento);
 
 		}
